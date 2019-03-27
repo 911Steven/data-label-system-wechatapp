@@ -4,16 +4,24 @@ const app = getApp()
 
 Page({
   data: {
-    active: 0,
+    tar_bar_active: 0,
+    tab_active: 0,
   },
 
-  onChange(event) {
+  //切换导航
+  barChange(event) {
     console.log(event.detail);
     wx.redirectTo({
       url: '/pages/userInfo/userInfo'
     })
 
   },
+
+  //切换标签
+  formTabChange(event) {
+    
+  }
+
 
 
 })
