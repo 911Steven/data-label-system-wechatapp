@@ -1,0 +1,75 @@
+<view class="container">
+
+
+  <!-- 用户信息 -->
+  <view class="userinfo">
+    <block>
+      <view class="userinfo-avatar">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+        <open-data class="userinfo-nickname" type="userNickName" lang="zh_CN"></open-data>
+    </block>
+  </view>
+
+
+
+  <!-- <view class="title">
+    <van-icon name="fire" size="30px" class="title-icon" />
+    <view class="title-text">标注微任务</view>
+  </view>
+  <view class="desc">轻量、可定制的数据标注系统</view> -->
+
+  <!--统计概况-->
+  <view class="mobile-nav">
+    <van-cell-group>
+      <van-cell title="接受任务数" value="122" />
+      <van-cell title="完成任务数" value="233" />
+    </van-cell-group>
+  </view>
+
+  <view class="mobile-nav">
+     <van-cell title="待成成任务数" value="233" />
+  </view>
+
+
+  <!--任务模版列表-->
+  <view class="task-list">
+
+    <view class="mobile-nav">
+      <van-card title="情感倾向标注" 
+      num="300" 
+      price="20%" 
+      desc="发布方： yulinying"
+      tag="文本型"
+      currency="完成百分比:"
+      centered=true
+      thumb="https://ws2.sinaimg.cn/large/006tKfTcly1g1hrpn5jogj302o02ot8o.jpg" />
+    </view>
+
+    <view class="mobile-nav">
+      <van-card title="情感倾向标注" 
+      num="20" 
+      price="20%" 
+      desc="发布方： yulinying"
+      tag="图片型"
+      currency="完成百分比:"
+      centered=true
+      thumb="https://ws2.sinaimg.cn/large/006tKfTcly1g1hrqbh6dnj302k02nq2q.jpg"/>
+    </view>
+
+    <view class="mobile-nav">
+      <van-card title="情感倾向标注" 
+      num="2" 
+      price="30%" 
+      desc="发布方： yulinying"
+      tag="音频型"
+      currency="完成百分比:"
+      centered=true
+      thumb="https://ws1.sinaimg.cn/large/006tKfTcly1g1hrrimkzhj302o02o3ya.jpg"/>
+    </view>
+  </view>
+
+
+
+
+</view>

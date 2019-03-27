@@ -1,7 +1,8 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/userInfo/userInfo"
+    "pages/userInfo/index",
+    "pages/center/index"
   ],
   "window":{
     "backgroundTextStyle":"light",

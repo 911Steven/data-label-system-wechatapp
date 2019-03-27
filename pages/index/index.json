@@ -1,14 +1,9 @@
 {
   "usingComponents": {
-    "van-button": "/miniprogram_npm/vant-weapp/button/index",
     "van-tabbar": "/miniprogram_npm/vant-weapp/tabbar/index",
     "van-tabbar-item": "/miniprogram_npm/vant-weapp/tabbar-item/index",
-    "van-icon": "/miniprogram_npm/vant-weapp/icon/index",
-    "van-cell": "/miniprogram_npm/vant-weapp/cell/index",
-    "van-cell-group": "/miniprogram_npm/vant-weapp/cell-group/index",
-    "van-tab": "/miniprogram_npm/vant-weapp/tab/index",
-    "van-tabs": "/miniprogram_npm/vant-weapp/tabs/index",
-    "van-card": "/miniprogram_npm/vant-weapp/card/index",
-    "van-panel": "/miniprogram_npm/vant-weapp/panel/index"
+    "van-transition": "/miniprogram_npm/vant-weapp/transition/index",
+    "center-page": "/pages/center/index",
+    "userInfo-page": "/pages/userInfo/index"
   }
 }
