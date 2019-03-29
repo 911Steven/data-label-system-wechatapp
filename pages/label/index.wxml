@@ -1,15 +1,17 @@
 <view class="container">
 
-  <view class="title">
-    <view class="title-text">情感倾向标注</view>
+ <view class="title">
+    <image class="task-image" src="{{formInfo.imagePath}}" />
+    <view class="title-text">{{formInfo.title}}</view>
   </view>
 
 
   <!--任务详情-->
   <view class="mobile-nav">
-    <view class="mobile-nav__title">请标注以下文本的情感倾向</view>
+    <view class="mobile-nav__title">{{formInfo.itemContent}}</view>
+
     <!--单选框 -->
-    <van-radio-group value="{{ radio }}" bind:change="radioOnChange">
+    <van-radio-group wx:if="{{formInfo.itemTypeIdx == 2}}" value="{{ radio }}" bind:change="radioOnChange">
       <van-cell-group>
         <van-cell title="单选框 1" clickable data-name="1" bind:click="onClick">
           <van-radio name="r1" />
@@ -19,20 +21,23 @@
         </van-cell>
       </van-cell-group>
     </van-radio-group>
+
     <!--输入框 -->
-    <van-cell-group>
+    <van-cell-group wx:if="{{formInfo.itemTypeIdx == 1}}">
       <van-field placeholder="请输入目标内容" bind:change="textOnChange" />
     </van-cell-group>
+
   </view>
 
+<!--按钮组-->
   <van-row gutter="20" class="action-button">
     <van-col span="12">
-      <van-button plain round="true" type="info" size="large" bindtap="collectTask">
-        <van-icon name="star-o" /> 收藏任务</van-button>
+      <van-button plain round="true" type="info" size="large" bindtap="saveProgress">
+        <van-icon name="star-o" /> 暂存并返回</van-button>
     </van-col>
     <van-col span="12">
-      <van-button plain round="true" type="info" size="large" bindtap="doTask">
-        <van-icon name="passed" /> 开始任务</van-button>
+      <van-button plain round="true" type="info" size="large" bindtap="nextDataSource">
+        <van-icon name="passed" /> 下一条</van-button>
     </van-col>
   </van-row>
 

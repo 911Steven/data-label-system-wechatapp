@@ -1,14 +1,13 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
-    "pages/userInfo/index",
-    "pages/center/index"
+    "pages/detail/index",
+    "pages/label/index"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#f8f8f8",
     "navigationBarTitleText": "数据标注微任务",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   }
-  
 }

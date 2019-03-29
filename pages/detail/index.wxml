@@ -1,42 +1,48 @@
 <view class="container">
 
   <view class="title">
-
-    <image class="task-image" src="https://ws2.sinaimg.cn/large/006tKfTcly1g1hrpn5jogj302o02ot8o.jpg" />
-    <view class="title-text">情感倾向标注</view>
+    <image class="task-image" src="{{formInfo.imagePath}}" />
+    <view class="title-text">{{formInfo.title}}</view>
   </view>
-
 
   <!--任务详情-->
   <view class="mobile-nav">
     <view class="mobile-nav__title">任务详情</view>
     <van-cell-group>
-      <van-cell title="任务类型" value="文本型" />
-      <van-cell title="输入类型" value="填写型" />
-      <van-cell title="任务总数" value="100" />
-      <van-cell title="任务剩余数" value="97" />
-      <van-cell title="发布方" value="yulinying" />
-      <van-cell title="创建时间" value="2019-03-21" />
-      <van-cell title="任务描述" value="nihao1\r\n这个世界\r\nhello world" />
+      <van-cell icon="flag-o" wx:if="{{finishPrecent != 'undefined'}}" title="目前进度" value="{{finishPrecent}}" />
+      <van-cell icon="qr" title="任务类型" value="{{formInfo.type}}" />
+      <van-cell icon="records" title="输入类型" value="{{formInfo.itemType}}" />
+      <van-cell icon="more-o" title="任务总数" value="{{formInfo.limitNum}}" />
+      <van-cell icon="more-o" title="任务剩余数" value="{{formInfo.limitNum - formInfo.curNum}}" />
+      <van-cell icon="more-o" title="数据源总数" value="{{formInfo.sourceCount}}" />
+      <van-cell icon="shop-o" title="发布方" value="{{formInfo.orgName}}" />
+      <van-cell icon="clock-o" title="创建时间" value="{{formInfo.createTime}}" />
     </van-cell-group>
+
+  </view>
+  <view class="mobile-nav">
+    <van-panel class="descPanel" title="任务描述">
+      <view class="description">{{formInfo.description}}</view>
+    </van-panel>
   </view>
 
-  <van-row gutter="20" class="action-button">
+  <!--按钮组-->
+  <van-row gutter="20" class="action-button" wx:if="{{finishPrecent == 'undefined'}}">
     <van-col span="12">
-      <van-button plain round="true" type="info" size="large" bindtap="collectTask">
+      <van-button plain round="true" type="info" size="large" bindtap="collectTask" data-form-id="1">
         <van-icon name="star-o" /> 收藏任务</van-button>
     </van-col>
     <van-col span="12">
-      <van-button plain round="true" type="info" size="large" bindtap="doTask">
+      <van-button plain round="true" type="info" size="large" bindtap="doTask" data-form-id="2">
         <van-icon name="passed" /> 开始任务</van-button>
     </van-col>
   </van-row>
 
-  <van-popup show="{{ popShow }}" position="top" bind:close="popClose" custom-style="color: #ffffff;background-color:black;opacity:0.8;padding:20px 20px 20px 20px">
-    任务已收藏，可在我的任务查看收藏
-  </van-popup>
-
-
-
+  <van-row class="action-button" wx:if="{{finishPrecent != 'undefined'}}">
+    <van-col span="24">
+      <van-button plain round="true" type="info" size="large" bindtap="doTask" data-form-id="2">
+        <van-icon name="play-circle-o" /> 继续任务</van-button>
+    </van-col>
+  </van-row>
 
 </view>

@@ -56,5 +56,13 @@
 
 .action-button{
   font-family: "Dosis", "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
-  margin: 0 0 0 50px
+  margin: 0 0 0 50px;
+}
+.description{
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.6);
+  margin: 30rpx;
+  font-family: "Dosis", "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+  padding: 0px 15px 20px 15px;
+  white-space: pre-line;
 }

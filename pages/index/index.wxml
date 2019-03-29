@@ -1,18 +1,110 @@
 <view class="container">
 
-<van-transition show="{{currentTab == 0? true: false}}" name="slide-left">
-<view hidden="{{currentTab == 0? false: true}}">
-  <center-page />
-</view>
-</van-transition>
-<van-transition show="{{currentTab == 1? true: false}}" name="slide-right">
-<view hidden="{{currentTab == 1? false: true}}">
-  <userInfo-page />
-</view>
-</van-transition>
 
+  <!--任务中心-->
+  <van-transition show="{{currentTab == 0? true: false}}" name="slide-left">
+    <view wx:if="{{currentTab == 0? true: false}}">
+
+      <view class="title">
+        <van-icon name="fire" size="30px" class="title-icon" />
+        <view class="title-text">标注微任务</view>
+      </view>
+      <view class="desc">轻量、可定制的数据标注系统</view>
+
+      <!--统计概况-->
+      <view class="mobile-nav">
+        <van-cell-group>
+          <van-cell icon="award-o" title="已发布模版数" value="{{ allFormCount }}" />
+          <van-cell icon="cluster-o"  title="已发布任务数" value="{{ allTaskCount }}" />
+        </van-cell-group>
+      </view>
+
+      <!--标签页-->
+      <view class="mobile-nav">
+        <view class="mobile-nav__title">数据标注类型</view>
+        <van-tabs active="{{ tab_active }}" bind:change="formTabChange" sticky animated>
+          <van-tab title="全部"></van-tab>
+          <van-tab title="文本型"></van-tab>
+          <van-tab title="图片型"></van-tab>
+          <van-tab title="音频型"></van-tab>
+        </van-tabs>
+      </view>
+
+      <!--任务模版列表-->
+      <view class="task-list">
+
+        <view class="mobile-nav"  wx:for="{{forms}}" wx:for-index="idx" wx:for-item="item">
+          <van-card 
+           bindtap="toDetail" data-form-id="{{item.formId}}"
+           title="{{item.title}}"
+           num="{{item.limitNum }}"
+           price="{{item.limitNum - item.curNum}}" 
+           desc="发布方：{{item.orgName}} " 
+           tag="{{item.type}}" 
+           currency="剩余数：" 
+           centered="true" 
+           thumb="{{item.imagePath}}" />
+        </view>
+
+      </view>
+    </view>
+  </van-transition>
+  <!--end 任务中心-->
+
+
+
+
+  <!--我的任务 -->
+  <van-transition show="{{currentTab == 1? true: false}}" name="slide-right">
+    <view wx:if="{{currentTab == 1? true: false}}">
+
+      <!-- 用户信息 -->
+      <view class="userinfo">
+        <block>
+          <view class="userinfo-avatar">
+            <open-data type="userAvatarUrl"></open-data>
+          </view>
+          <open-data class="userinfo-nickname" type="userNickName" lang="zh_CN"></open-data>
+        </block>
+      </view>
+
+      <!--统计概况-->
+      <view class="mobile-nav">
+        <van-cell-group>
+          <van-cell icon="star-o" title="接受任务数" value="{{ myAllTaskCount }}" />
+          <van-cell icon="passed" title="完成任务数" value="{{ myFinishTaskCount }}" />
+        </van-cell-group>
+      </view>
+
+      <view class="mobile-nav">
+        <van-cell icon="todo-list-o" title="待成成任务数" value="{{ myRunTaskCount }}" />
+      </view>
+
+      <!--任务模版列表-->
+      <view class="task-list">
+        <view class="mobile-nav" wx:for="{{myTasks}}" wx:for-index="idx" wx:for-item="item">
+          <van-card 
+          bindtap="toDetail" data-form-id="{{item.formId}}" data-finish-precent="{{item.finishPrecent}}"
+          title="{{item.title}}"
+          num="{{item.sourceCount}}" 
+          price="{{item.finishPrecent}}" 
+          desc="发布方： {{item.orgName}}" 
+          tag="{{item.itemType}}" 
+          currency="完成百分比:" 
+          centered="true" 
+          thumb="{{item.imagePath}}" />
+        </view>
+      </view>
+    </view>
+  </van-transition>
+  <!--end 我的任务 -->
+
+
+  <!--tabbar-->
   <van-tabbar active="{{ currentTab }} " bind:change="barChange">
     <van-tabbar-item icon="send-gift ">任务中心</van-tabbar-item>
     <van-tabbar-item icon="manager ">我的任务</van-tabbar-item>
   </van-tabbar>
+
+
 </view>
