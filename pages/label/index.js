@@ -4,9 +4,13 @@ const app = getApp()
 
 Page({
   data: {
+    radio: 1,
+    curDataIdx: 0,
+    curFieldContent: null,
     formId: null,
     formInfo: null,
-    dataSource: []
+    dataSource: [],
+    labels: []
   },
 
   //页面加载
@@ -15,11 +19,12 @@ Page({
       formId: options.formId,
     });
     this.getFormDetail();
+    this.getDataSource();
   },
 
   //获取任务详情
   getFormDetail: function() {
-    var url = app.globalData.hostUrl + "/portal/getFormDetail.do";
+    var url = app.globalData.hostUrl + "/portal/getFormDetailInTask.do";
     wx.request({
       url: url,
       method: 'POST',
@@ -51,16 +56,81 @@ Page({
     })
   },
 
-  onClick(event) {
-
+  //单选按钮更改
+  radioOnChange: function(event) {
+    // console.log(event.target.dataset.name)
+    // console.log(event.target.dataset.itemOptionId)
+    this.setData({
+      radio: event.target.dataset.name
+    })
   },
 
-  radioOnChange(event) {
-    console.log(event.name)
+  //文本框输入
+  textOnChange: function(event) {
+    this.setData({
+      curFieldContent: event.detail
+    })
   },
 
-  textOnChange(event) {
+  //下一条标注数据
+  nextDataSource: function(event) {
+    var index = this.data.curDataIdx;
+    var content;
+    if (this.data.formInfo.itemType == 2) {
+      content = this.data.formInfo.itemOption[this.data.radio - 1].itemOptionId
+    } else {
+      content = this.data.curFieldContent;
+    }
+    var label = {
+      dataSourceId: this.data.dataSource[index].dataSourceId,
+      content: content
+    }
+    this.data.labels.push(label);
+    //复原数据
+    this.setData({
+      curDataIdx: index + 1,
+      radio: 1,
+      curFieldContent: null
+    })
+  },
 
+  //提交数据
+  submitData: function(event) {
+    var index = this.data.curDataIdx;
+    var content;
+    if (this.data.formInfo.itemType == 2) {
+      content = this.data.formInfo.itemOption[this.data.radio - 1].itemOptionId
+    } else {
+      content = this.data.curFieldContent;
+    }
+    var label = {
+      dataSourceId: this.data.dataSource[index].dataSourceId,
+      content: content
+    }
+    this.data.labels.push(label);
+    //提交请求
+    var url = app.globalData.hostUrl + "/portal/submitFormInstance.do";
+    wx.request({
+        url: url,
+        method: 'POST',
+        data: {
+          formId: this.data.formId,
+          openid: wx.getStorageSync("openid"),
+          labels: this.data.labels
+        },
+        success: res => {
+          this.setData({})
+        }
+      }),
+      //返回首页
+      wx.navigateBack({
+        delta: 5
+      })
+  },
+
+  //保存进度并返回主城
+  saveProgress:function(event){
+    this.submitData(event);
   }
 
 

@@ -35,6 +35,7 @@ Page({
 
   //开始任务
   doTask(event) {
+    this.collectForm();
     var formId = this.data.formId;
     wx.redirectTo({
       url: '/pages/label/index?formId=' + formId,

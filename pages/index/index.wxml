@@ -101,7 +101,7 @@
 
 
   <!--tabbar-->
-  <van-tabbar active="{{ currentTab }} " bind:change="barChange">
+  <van-tabbar active="{{ currentTab }} " bind:change="barChange" active-color="#fc2a35">
     <van-tabbar-item icon="send-gift ">任务中心</van-tabbar-item>
     <van-tabbar-item icon="manager ">我的任务</van-tabbar-item>
   </van-tabbar>

@@ -71,7 +71,8 @@ Page({
       url: url,
       method: 'POST',
       data: {
-        type: type
+        type: type,
+        openid: wx.getStorageSync("openid")
       },
       success: res => {
         this.setData({
