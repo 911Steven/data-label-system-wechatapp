@@ -1,6 +1,6 @@
 /**index.wxss**/
 .container {
-  padding: 10px 15px 0;
+  padding: 10px 15px 40px;
 }
 
 .title {
@@ -65,4 +65,7 @@
   font-family: "Dosis", "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
   padding: 0px 15px 20px 15px;
   white-space: pre-line;
+}
+.bottom-button{
+  padding-bottom:100px;
 }

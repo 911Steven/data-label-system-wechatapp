@@ -50,18 +50,18 @@
 
   <!--按钮组-->
   <van-row gutter="20" class="action-button" wx:if="{{curDataIdx < dataSource.length - 1}}">
-    <van-col span="12">
+    <van-col span="12" class="bottom-button">
       <van-button plain round="true" type="info" size="large" bindtap="saveProgress">
         <van-icon name="star-o" /> 暂存并返回</van-button>
     </van-col>
-    <van-col span="12">
+    <van-col span="12" class="bottom-button">
       <van-button plain round="true" type="info" size="large" bindtap="nextDataSource">
         <van-icon name="passed" /> 下一条</van-button>
     </van-col>
   </van-row>
 
   <van-row class="action-button" wx:if="{{curDataIdx >= dataSource.length - 1}}">
-    <van-col span="24">
+    <van-col span="24" class="bottom-button">
       <van-button plain round="true" type="info" size="large" bindtap="submitData">
         <van-icon name="passed" /> 提交</van-button>
     </van-col>

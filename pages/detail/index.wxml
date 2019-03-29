@@ -27,20 +27,20 @@
   </view>
 
   <!--按钮组-->
-  <van-row gutter="20" class="action-button" wx:if="{{finishPrecent == 'undefined'}}">
-    <van-col span="12">
+  <van-row gutter="20" class="action-button" wx:if="{{finishPrecent == 'undefined'}}" >
+    <van-col span="12" class="bottom-button">
       <van-button plain round="true" type="info" size="large" bindtap="collectTask" data-form-id="1">
         <van-icon name="star-o" /> 收藏任务</van-button>
     </van-col>
-    <van-col span="12">
+    <van-col span="12" class="bottom-button">
       <van-button plain round="true" type="info" size="large" bindtap="doTask" data-form-id="2">
         <van-icon name="passed" /> 开始任务</van-button>
     </van-col>
   </van-row>
 
   <van-row class="action-button" wx:if="{{finishPrecent != 'undefined'}}">
-    <van-col span="24">
-      <van-button plain round="true" type="info" size="large" bindtap="doTask" data-form-id="2">
+    <van-col span="24" class="bottom-button">
+      <van-button plain round="true" type="info" size="large" bindtap="doTask" data-form-id="2" >
         <van-icon name="play-circle-o" /> 继续任务</van-button>
     </van-col>
   </van-row>
